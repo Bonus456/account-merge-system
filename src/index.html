@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Account Merge System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- <link rel="stylesheet" href="style.css"/>-->>
+</head>
+<body class="bg-gray-100 p-5 font-sans">
+
+  <!-- Main Merge Modal -->
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
+  <div class="bg-white p-6 rounded-lg w-11/12 max-w-md text-center">
+    <h3 class="text-xl font-semibold mb-4">Merge Selection Options</h3>
+    <div id="modal-options" class="space-y-2"></div>
+    <button id="cancel-btn" class="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded">
+      Cancel
+    </button>
+  </div>
+</div>
+
+  <!-- Name Conflict Modal -->
+<div id="name-conflict-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
+  <div class="bg-white p-6 rounded-lg w-11/12 max-w-md text-center">
+    <h3 class="text-xl font-semibold mb-2">Are you sure you want to merge accounts that have different names?</h3>
+    <p class="text-sm text-gray-600 mb-4">
+      Most information on these accounts do not match, please be sure that all selected info is correct before merging.
+    </p>
+    <div id="name-conflict-options" class="space-y-2"></div>
+    <button onclick="cancelNameConflict()" class="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded">
+      Cancel
+    </button>
+  </div>
+</div>
+
+  <!-- Main Container -->
+  <div class="max-w-[800px] mx-auto bg-white p-5 rounded-lg">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="text-2xl font-bold">Account Merge System</h1>
+      <button id="merge-btn" class="px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-800">Merge</button>
+      <select id="sort-select" class="px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-800">
+        <option value="lastName" selected>Sort by Last Name (A–Z)</option>
+        <option value="color">Sort by Color (A–Z)</option>
+        <option value="address">Sort by Address (A–Z)</option>
+      </select>
+    </div>
+
+    <div id="account-list"></div>
+
+    <div id="pagination" class="mt-4 text-center">
+      <!-- buttons will be injected -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

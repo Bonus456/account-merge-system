@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Account Merge System</title>
+  <link href="./style - noTailwind.css" rel="stylesheet"> 
+</head>
+<body>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Select the dominant account</h3>
+      <div id="modal-options"></div>
+      <button id="cancel-btn">Cancel</button>
+    </div>
+  </div>
+
+<div id="name-conflict-modal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Are you sure you want to merge accounts that have different names?</h3>
+    <p style="font-size: 0.9em; color: #666;">
+      Most information on these accounts do not match, please be sure that all selected info is correct before merging.
+    </p>
+    <div id="name-conflict-options"></div>
+    <button onclick="cancelNameConflict()">Cancel</button>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="header-row">
+      <h1>Account Merge System</h1>
+      <button id="merge-btn">Merge</button>
+      <select id="sort-select">
+        <option value="lastName" selected>Sort by Last Name (A–Z)</option>
+        <option value="color">Sort by Color (A–Z)</option>
+        <option value="address">Sort by Address (A–Z)</option>
+      </select>
+    </div>
+    <div id="account-list"></div>
+    <div id="pagination"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
