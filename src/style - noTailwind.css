@@ -1,4 +1,3 @@
-@import "tailwindcss";
 
 body {
   font-family: Arial, sans-serif;
@@ -34,17 +33,19 @@ body {
 button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #007bff;
-  border: none;
+  background-color: #191c24;
+  border: 2px solid #f88233;
   color: white;
-  border-radius: 4px;
+  border-radius: 100px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #e1701f;
 }
 
+/* ====== Modal Details ====== */
 .modal {
   position: fixed;
   top: 0;
@@ -79,6 +80,7 @@ button:hover {
   display: none;
 }
 
+/* ====== Page Num Details ====== */
 #pagination {
   margin-top: 10px;
   text-align: center;
@@ -89,22 +91,109 @@ button:hover {
   padding: 5px 10px;
 }
 
+/* ====== Header Details ====== */
 .header-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #191c24;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
 }
 
+.header-row h1 {
+  color: white;
+  margin: 0;
+  font-size: 24px;
+}
+
+/* ====== Sort Button ====== */
 #sort-select {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #007bff;
-  border: none;
+  background-color: #191c24;
+  border: 2px solid #f88233;
   color: white;
-  border-radius: 4px;
+  border-radius:  100px;;
   cursor: pointer;
+  /* stuff to move the dropdownarrow :(*/
+  appearance: none;            
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 2rem;         
+  background-image: url("data:image/svg+xml,%3Csvg fill='gray' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.25 7.75L10 12.5l4.75-4.75'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center; 
+  background-size: 1rem;
 }
 
 #sort-select:hover {
-  background-color: #0056b3;
+  background-color: #e1701f;
 }
+
+/* ====== Checkbox Details ====== */
+.custom-checkbox {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  padding-bottom: 20px;
+  margin: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.custom-checkbox .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+  background-color: #f88233;
+  border-color: #f88233;
+}
+
+.custom-checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark:after {
+  display: block;
+}
+
+.custom-checkbox .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* ====== Checkbox Details ====== */
+.background-wave {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.6;
+}
+

@@ -1,5 +1,5 @@
 const accounts = [
-   { id: 1, firstName: "John", lastName: "Doe", address: "123 Main St", color: "Blue" },
+  { id: 1, firstName: "John", lastName: "Doe", address: "123 Main St", color: "Blue" },
   { id: 2, firstName: "Jane", lastName: "Smith", address: "456 Maple Ave", color: "Green" },
   { id: 3, firstName: "Alice", lastName: "Johnson", address: "789 Oak Rd", color: "Red" },
   { id: 4, firstName: "John", lastName: "Doe", address: "555 Elm St", color: "Blue" },
@@ -11,32 +11,32 @@ const accounts = [
   { id: 10, firstName: "Tom", lastName: "Hanks", address: "888 Cedar Cir", color: "Blue" },
 
   { id: 11, firstName: "Emily", lastName: "Clark", address: "1010 River Rd", color: "Purple" },
-  { id: 12, firstName: "John", lastName: "Doe", address: "123 Main St", color: "Blue" }, // duplicate
+  { id: 12, firstName: "John", lastName: "Doe", address: "123 Main St", color: "Blue" },  
   { id: 13, firstName: "Greg", lastName: "Miller", address: "212 Sunset Blvd", color: "Red" },
   { id: 14, firstName: "Alice", lastName: "Johnson", address: "111 Forest Ln", color: "Red" },
-  { id: 15, firstName: "Emily", lastName: "Clark", address: "1010 River Rd", color: "Teal" }, // same name/address, diff color
+  { id: 15, firstName: "Emily", lastName: "Clark", address: "1010 River Rd", color: "Teal" }, 
   { id: 16, firstName: "Sarah", lastName: "Lee", address: "400 Ocean Ave", color: "Blue" },
-  { id: 17, firstName: "Jane", lastName: "Smith", address: "456 Maple Ave", color: "Green" }, // exact duplicate
+  { id: 17, firstName: "Jane", lastName: "Smith", address: "456 Maple Ave", color: "Green" }, 
   { id: 18, firstName: "David", lastName: "Stone", address: "150 Hilltop Rd", color: "Orange" },
-  { id: 19, firstName: "Lucas", lastName: "White", address: "221 Sunset Blvd", color: "Red" }, // similar address
-  { id: 20, firstName: "Jane", lastName: "Smith", address: "999 Grove St", color: "Green" },   // same name, diff address
+  { id: 19, firstName: "Lucas", lastName: "White", address: "221 Sunset Blvd", color: "Red" }, 
+  { id: 20, firstName: "Jane", lastName: "Smith", address: "999 Grove St", color: "Green" },   
 
   { id: 21, firstName: "Anna", lastName: "Bell", address: "305 Willow Way", color: "Pink" },
-  { id: 22, firstName: "Tom", lastName: "Hanks", address: "888 Cedar Cir", color: "Blue" }, // duplicate
-  { id: 23, firstName: "Chris", lastName: "Brown", address: "456 Maple Ave", color: "Teal" }, // same address
-  { id: 24, firstName: "Brian", lastName: "Lee", address: "789 Oak Rd", color: "Purple" }, // same address
-  { id: 25, firstName: "Anna", lastName: "Bell", address: "305 Willow Way", color: "Pink" }, // duplicate
-  { id: 26, firstName: "Megan", lastName: "Stone", address: "150 Hilltop Rd", color: "Yellow" }, // same address
-  { id: 27, firstName: "Cathy", lastName: "White", address: "999 Pine St", color: "Pink" }, // duplicate
+  { id: 22, firstName: "Tom", lastName: "Hanks", address: "888 Cedar Cir", color: "Blue" },  
+  { id: 23, firstName: "Chris", lastName: "Brown", address: "456 Maple Ave", color: "Teal" },  
+  { id: 24, firstName: "Brian", lastName: "Lee", address: "789 Oak Rd", color: "Purple" },  
+  { id: 25, firstName: "Anna", lastName: "Bell", address: "305 Willow Way", color: "Pink" },  
+  { id: 26, firstName: "Megan", lastName: "Stone", address: "150 Hilltop Rd", color: "Yellow" },  
+  { id: 27, firstName: "Cathy", lastName: "White", address: "999 Pine St", color: "Pink" },  
   { id: 28, firstName: "Nina", lastName: "Brown", address: "303 Canyon Dr", color: "Red" },
   { id: 29, firstName: "Kyle", lastName: "Green", address: "404 Redwood Ln", color: "Orange" },
 
-  { id: 30, firstName: "Alice", lastName: "Johnson", address: "789 Oak Rd", color: "Red" }, // duplicate
-  { id: 31, firstName: "David", lastName: "Stone", address: "150 Hilltop Rd", color: "Orange" }, // duplicate
-  { id: 32, firstName: "Tom", lastName: "Hanks", address: "222 Cedar Cir", color: "Yellow" }, // similar
-  { id: 33, firstName: "Lucas", lastName: "White", address: "221 Sunset Blvd", color: "Red" }, // duplicate
-  { id: 34, firstName: "Emily", lastName: "Clark", address: "1212 River Rd", color: "Purple" }, // same name
-  { id: 35, firstName: "John", lastName: "Doe", address: "123 Main St", color: "Blue" } // duplicate
+  { id: 30, firstName: "Alice", lastName: "Johnson", address: "789 Oak Rd", color: "Red" },  
+  { id: 31, firstName: "David", lastName: "Stone", address: "150 Hilltop Rd", color: "Orange" }, 
+  { id: 32, firstName: "Tom", lastName: "Hanks", address: "222 Cedar Cir", color: "Yellow" }, 
+  { id: 33, firstName: "Lucas", lastName: "White", address: "221 Sunset Blvd", color: "Red" }, 
+  { id: 34, firstName: "Emily", lastName: "Clark", address: "1212 River Rd", color: "Purple" }, 
+  { id: 35, firstName: "John", lastName: "Doe", address: "123 Main St", color: "Blue" } 
 ];
 
 let marked = new Set();
@@ -66,7 +66,10 @@ function renderAccounts() {
         Address: ${account.address}<br/>
         Favorite Color: ${account.color}
       </div>
-      <input type="checkbox" data-id="${account.id}" ${marked.has(account.id) ? "checked" : ""}>
+      <label class="custom-checkbox">
+        <input type="checkbox" data-id="${account.id}" ${marked.has(account.id) ? "checked" : ""}>
+        <span class="checkmark"></span>
+      </label>
     `;
     container.appendChild(div);
   });
@@ -121,6 +124,25 @@ document.getElementById("merge-btn").addEventListener("click", () => {
 });
 
 function showMergeChoice() {
+  const selectedAccounts = [...marked].map(id => accounts.find(a => a.id === id));
+
+  //catch if all marked accounts are identical then just merge and move on
+  if (areAccountsIdentical(selectedAccounts)) {
+    const [firstAccount, ...rest] = selectedAccounts;
+
+    rest.forEach(acc => {
+      const index = accounts.findIndex(a => a.id === acc.id);
+      if (index !== -1) {
+        accounts.splice(index, 1);
+      }
+    });
+
+    marked.clear();
+    renderAccounts();
+    return; 
+  }
+
+  // basic modal display
   const modal = document.getElementById("modal");
   const optionsContainer = document.getElementById("modal-options");
   optionsContainer.innerHTML = `
@@ -135,6 +157,19 @@ function showMergeChoice() {
   };
 
   modal.classList.remove("hidden");
+}
+
+function areAccountsIdentical(accounts) {
+  if (accounts.length < 2) return false;
+
+  const [first, ...rest] = accounts;
+
+  return rest.every(acc =>
+    acc.firstName === first.firstName &&
+    acc.lastName === first.lastName &&
+    acc.address === first.address &&
+    acc.color === first.color
+  );
 }
 
 function openModal() {
@@ -222,9 +257,15 @@ function mergeAllSelected(selectedAccounts, finalName) {
 
   const base = { id: Date.now(), firstName, lastName };
 
-  base.address = [...new Set(selectedAccounts.map(a => a.address))].join(", ");
-  base.color = [...new Set(selectedAccounts.map(a => a.color))].join(", ");
+  // separate previously merged info by comma to remove any duplicates then merge with new info
+  const allAddresses = selectedAccounts.flatMap(a => a.address.split(",").map(addr => addr.trim()));
+  const uniqueAddresses = [...new Set(allAddresses)];
+  base.address = uniqueAddresses.join(", ");
+  const allColors = selectedAccounts.flatMap(a => a.color.split(",").map(c => c.trim()));
+  const uniqueColors = [...new Set(allColors)];
+  base.color = uniqueColors.join(", ");
 
+  // merge the data
   selectedAccounts.forEach(acc => {
     const index = accounts.findIndex(a => a.id === acc.id);
     if (index !== -1) {
@@ -237,6 +278,7 @@ function mergeAllSelected(selectedAccounts, finalName) {
   renderAccounts();
 }
 
+//modal popup when merging all data but names are different
 function openNameConflictModal(selectedAccounts) {
   const modal = document.getElementById("name-conflict-modal");
   const container = document.getElementById("name-conflict-options");
@@ -291,5 +333,6 @@ document.getElementById("sort-select").addEventListener("change", (e) => {
   currentPage = 1;
   renderAccounts();
 });
+
 
 renderAccounts();
