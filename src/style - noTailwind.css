@@ -36,7 +36,7 @@ button {
   background-color: #191c24;
   border: 2px solid #f88233;
   color: white;
-  border-radius: 100px;
+  border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
